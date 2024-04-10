@@ -1,7 +1,7 @@
 # guided-matching-examples
 Examples of guided matching rulesets that can be used as implementation starters or inspiration
 
-## Import Guided Matching rules
+## Instructions: import Guided Matching rules into existing Guided Matching Setup
 With the steps in this document, you could import a standard ruleset with Guided Matching rules that could be used for CAMT.053 files. Instead of configuring rule by rule, you could import this ruleset by copy-pasting the JSON code.
 
 ### Step 1: Create a Custom tab for Guided Matching Setups
@@ -27,3 +27,15 @@ What you need to do is:
 2. Paste the following JSON into this field
 3. OPTIONAL: Make sure the `<Put here the exact name of your target>` part is replaced with the exact name of the Target
 4. OPTIONAL: You can Copy-Paste the name from the ‘Target’ field in the record for this
+
+## Contributing
+
+When contributing to this repository, please first discuss the change you wish to make via an issue or any other method with FinDock before making a change.
+
+## Support
+
+FinDock Labs is a non-supported group in FinDock that releases applications. Despite the name, assistance for any of these applications is not provided by FinDock Support because they are not officially supported features. For a list of these apps, visit the FinDock Labs account on Github. 
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](/LICENSE) file for details
