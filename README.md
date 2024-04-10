@@ -28,7 +28,7 @@ What you need to do is:
 
 IF REQUIRED FOR RULESET:
 
-4. Replace the Target name in the example JSON with the name of your Target. The location is marked“<Put here the name of your target>.
+4. Replace the Target name in the example JSON with the name of your Target. The location is marked `<Put here the name of your target>`.
 5. Save your changes.
 
 ## Contributing
