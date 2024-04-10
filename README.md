@@ -25,6 +25,7 @@ When you have navigated to the newly created tab, you can open the listview ‘A
 What you need to do is:
 1. Make sure the field called ‘Rules’ is empty
 2. Paste the following JSON into this field
+
 IF REQUIRED FOR RULESET:
 3. Make sure the `<Put here the exact name of your target>` part is replaced with the exact name of the Target
 4. You can Copy-Paste the name from the ‘Target’ field in the record for this
