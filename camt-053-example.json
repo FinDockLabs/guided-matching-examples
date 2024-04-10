@@ -1,0 +1,336 @@
+[
+  {
+    "jobNr": "1",
+    "seqNr": "1",
+    "fieldType": "string",
+    "fieldName": "cpm__Target__c",
+    "id": "R3GKuL-84780850",
+    "constant": "<Put here the exact name of your target>",
+    "name": "Set Target",
+    "ruleType": "constant",
+    "iconName": "standard:topic2"
+  },
+  {
+    "iconName": "standard:text",
+    "ruleType": "normalize",
+    "name": "Make Payment Reference lowercase",
+    "caseStrategy": "toLowerCase",
+    "whitespaceStrategy": "deleteWhitespace",
+    "id": "GDXO14-84401638",
+    "fieldName": "cpm__Payment_Reference__c",
+    "fieldType": "string",
+    "seqNr": "2",
+    "jobNr": "1"
+  },
+  {
+    "iconName": "standard:entity",
+    "ruleType": "query",
+    "multipleResultsStrategy": "takeFirst",
+    "singleResultStrategy": "takeSingleResult",
+    "name": "Find Payment Profile based on Bank Account Number",
+    "entryCriteria": [
+      {
+        "id": "nt6JBy-83232645",
+        "fieldName": "cpm__IBAN__c",
+        "fieldType": "string",
+        "comparisonOperator": "notEquals"
+      }
+    ],
+    "queryObject": "cpm__Payment_Profile__c",
+    "queryReturnField": "Id",
+    "queryFirstWhereQueryObjectField": "cpm__IBAN__c",
+    "queryFirstWhereTransactionField": "cpm__IBAN__c",
+    "id": "1tbCOi-83301125",
+    "fieldName": "cpm__Payment_Profile__c",
+    "fieldType": "reference",
+    "seqNr": "3",
+    "jobNr": "1"
+  },
+  {
+    "iconName": "standard:entity",
+    "ruleType": "query",
+    "multipleResultsStrategy": "takeFirst",
+    "singleResultStrategy": "takeSingleResult",
+    "name": "Find Contact based on Payment Profile",
+    "entryCriteria": [
+      {
+        "id": "CxPZqQ-83339526",
+        "fieldName": "cpm__Payment_Profile__c",
+        "fieldType": "reference",
+        "comparisonOperator": "notEquals"
+      }
+    ],
+    "queryObject": "cpm__Payment_Profile__c",
+    "queryReturnField": "cpm__Contact__c",
+    "queryFirstWhereQueryObjectField": "Id",
+    "queryFirstWhereTransactionField": "cpm__Payment_Profile__c",
+    "id": "HlL1eb-83389191",
+    "fieldName": "cpm__Contact__c",
+    "fieldType": "reference",
+    "seqNr": "4",
+    "jobNr": "1"
+  },
+  {
+    "iconName": "standard:entity",
+    "ruleType": "query",
+    "multipleResultsStrategy": "takeFirst",
+    "singleResultStrategy": "takeSingleResult",
+    "name": "Find Account based on Payment Profile",
+    "entryCriteria": [
+      {
+        "id": "vm0kCJ-83457213",
+        "fieldName": "cpm__Payment_Profile__c",
+        "fieldType": "reference",
+        "comparisonOperator": "notEquals"
+      },
+      {
+        "id": "zK6Y7r-83466250",
+        "fieldName": "cpm__Contact__c",
+        "fieldType": "reference",
+        "comparisonOperator": "equals"
+      }
+    ],
+    "queryObject": "cpm__Payment_Profile__c",
+    "queryReturnField": "cpm__Account__c",
+    "queryFirstWhereQueryObjectField": "Id",
+    "queryFirstWhereTransactionField": "cpm__Payment_Profile__c",
+    "id": "3eEAIT-83516999",
+    "fieldName": "cpm__Account__c",
+    "fieldType": "reference",
+    "seqNr": "5",
+    "jobNr": "1"
+  },
+  {
+    "iconName": "standard:user",
+    "ruleType": "manualInput",
+    "name": "Find Contact and Account if no contact and account is found via Payment Profile",
+    "entryCriteria": [
+      {
+        "id": "ZV4jJQ-83582067",
+        "fieldName": "cpm__Payment_Profile__c",
+        "fieldType": "reference",
+        "comparisonOperator": "equals"
+      },
+      {
+        "id": "zVDm57-83589501",
+        "fieldName": "cpm__Contact__c",
+        "fieldType": "reference",
+        "comparisonOperator": "equals"
+      },
+      {
+        "id": "DzG9wW-83595429",
+        "fieldName": "cpm__Account__c",
+        "fieldType": "reference",
+        "comparisonOperator": "equals"
+      }
+    ],
+    "guidedReviewType": "contactAccountSearch",
+    "referencedObject": "Contact",
+    "guidedReviewSearchFieldsToDisplay": [
+      "Name",
+      "npo02__Household__c"
+    ],
+    "guidedReviewAccountSearchFieldsToDisplay": [
+      "Name"
+    ],
+    "prefillSearchBoxTransactionField": "cpm__Account_Holder_Name__c",
+    "id": "zJPwkv-83744065",
+    "fieldName": "cpm__Contact__c",
+    "fieldType": "reference",
+    "forcedExecuteAfterRule": "3eEAIT-83516999",
+    "seqNr": "6",
+    "jobNr": "1",
+    "allowSkip": true
+  },
+  {
+    "iconName": "standard:record_create",
+    "ruleType": "createContact",
+    "name": "Create Contact if not found",
+    "fieldMapping": {
+      "LastName": {
+        "type": "field",
+        "fieldName": "cpm__Account_Holder_Name__c"
+      }
+    },
+    "forcedExecuteAfterRule": "zJPwkv-83744065",
+    "id": "87G5Md-83928360",
+    "fieldName": "cpm__Contact__c",
+    "fieldType": "reference",
+    "seqNr": "7",
+    "jobNr": "1"
+  },
+  {
+    "forcedExecuteAfterRule": "87G5Md-83928360",
+    "jobNr": "1",
+    "seqNr": "8",
+    "fieldType": "reference",
+    "fieldName": "cpm__Account__c",
+    "id": "XF1DmY-69384120",
+    "fieldMapping": {
+      "Name": {
+        "fieldName": "cpm__Account_Holder_Name__c",
+        "type": "field"
+      }
+    },
+    "entryCriteria": [
+      {
+        "comparisonOperator": "equals",
+        "fieldType": "reference",
+        "fieldName": "cpm__Contact__c",
+        "id": "uQbXx0-69367710"
+      }
+    ],
+    "name": "Create Account if not found",
+    "ruleType": "createRecord",
+    "iconName": "standard:record_create"
+  },
+  {
+    "iconName": "standard:record_create",
+    "ruleType": "createPaymentProfile",
+    "name": "Create Payment Profile if not found",
+    "entryCriteria": [
+      {
+        "id": "o2V7GK-83979539",
+        "fieldName": "cpm__Contact__c",
+        "fieldType": "reference",
+        "comparisonOperator": "notEquals"
+      }
+    ],
+    "fieldMapping": {
+      "RecordTypeId": {
+        "value": "IBAN"
+      }
+    },
+    "forcedExecuteAfterRule": "XF1DmY-69384120",
+    "persistBeforeProcessing": true,
+    "id": "fk3m5T-84016960",
+    "fieldName": "cpm__Payment_Profile__c",
+    "fieldType": "reference",
+    "seqNr": "9",
+    "jobNr": "1"
+  },
+  {
+    "jobNr": "1",
+    "seqNr": "10",
+    "forcedExecuteAfterRule": "fk3m5T-84016960",
+    "fieldType": "reference",
+    "fieldName": "cpm__Payment_Profile__c",
+    "id": "H7qPyL-69483168",
+    "fieldMapping": {
+      "RecordTypeId": {
+        "value": "IBAN"
+      }
+    },
+    "entryCriteria": [
+      {
+        "comparisonOperator": "notEquals",
+        "fieldType": "reference",
+        "fieldName": "cpm__Account__c",
+        "id": "au9KqF-69453637"
+      },
+      {
+        "comparisonOperator": "equals",
+        "fieldType": "reference",
+        "fieldName": "cpm__Contact__c",
+        "id": "3qHnla-69463739"
+      }
+    ],
+    "name": "Create payment profile if not found for Account",
+    "ruleType": "createPaymentProfile",
+    "iconName": "standard:record_create"
+  },
+  {
+    "iconName": "standard:entity",
+    "ruleType": "query",
+    "multipleResultsStrategy": "takeFirst",
+    "singleResultStrategy": "takeSingleResult",
+    "name": "Find Installment based on Payment Reference",
+    "queryObject": "cpm__Installment__c",
+    "queryReturnField": "Id",
+    "queryFirstWhereQueryObjectField": "cpm__Contact__c",
+    "queryFirstWhereTransactionField": "cpm__Contact__c",
+    "queryCriteria": [
+      {
+        "id": "ZAitiO-84099669",
+        "fieldName": "cpm__Final_Payment_Reference__c",
+        "fieldType": "string",
+        "comparisonOperator": "equals",
+        "mappingType": "field",
+        "value": "cpm__Payment_Reference__c"
+      },
+      {
+        "id": "AYMbKh-84134228",
+        "fieldName": "cpm__Status__c",
+        "fieldType": "picklist",
+        "comparisonOperator": "equals",
+        "mappingType": "value",
+        "value": "New"
+      }
+    ],
+    "queryOrderByField": "cpm__Due_Date__c",
+    "querySortOrder": "asc",
+    "forcedExecuteAfterRule": "H7qPyL-69483168",
+    "id": "Yv75DS-84165384",
+    "fieldName": "cpm__Installment__c",
+    "fieldType": "reference",
+    "seqNr": "11",
+    "jobNr": "1"
+  },
+  {
+    "iconName": "standard:record_create",
+    "ruleType": "createInstallment",
+    "name": "Create Installment if not found",
+    "fieldMapping": {
+      "cpm__Source__c": {
+        "value": "PaymentHub-for-NPSP",
+        "type": "value"
+      },
+      "cpm__Bank_Statement_Description__c": {
+        "type": "field",
+        "fieldName": "cpm__Payment_Reference__c"
+      },
+      "cpm__Payment_Method__c": {
+        "type": "value",
+        "value": "Direct Debit"
+      },
+      "cpm__Payment_Processor__c": {
+        "type": "value",
+        "value": "PaymentHub-SEPA"
+      }
+    },
+    "id": "I2HasE-84347433",
+    "fieldName": "cpm__Installment__c",
+    "fieldType": "reference",
+    "seqNr": "12",
+    "jobNr": "1"
+  },
+  {
+    "ruleType": "processInstallment",
+    "name": "Process Installment",
+    "fieldName": "cpm__Installment__c",
+    "fieldType": "reference",
+    "id": "PROCINS",
+    "installmentRowFields": [
+      "cpm__Due_Date__c",
+      "cpm__Contact__c",
+      "cpm__Account__c",
+      "cpm__Final_Payment_Reference__c",
+      "cpm__Amount__c",
+      "cpm__Payment_Profile__c"
+    ],
+    "installmentSubtitleFields": [
+      "cpm__Amount_Open__c",
+      "cpm__Due_Date__c",
+      "cpm__Contact__c",
+      "cpm__Account__c",
+      "cpm__Final_Payment_Reference__c"
+    ],
+    "guidedReviewStrategyPartiallyPaid": true,
+    "guidedReviewStrategyOverpaid": true,
+    "guidedReviewStrategyMultipleInstallmentsMatched": true,
+    "overpaidInstallmentHandlingStrategy": "bookAllOnFirst",
+    "iconName": "standard:partner_fund_allocation",
+    "seqNr": "13",
+    "jobNr": "1"
+  }
+]
