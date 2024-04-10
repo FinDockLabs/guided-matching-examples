@@ -1,4 +1,4 @@
-# guided-matching-examples
+# Guided Matching Examples
 Examples of guided matching rulesets that can be used as implementation starters or inspiration
 
 ## Instructions: import Guided Matching rules into existing Guided Matching Setup
