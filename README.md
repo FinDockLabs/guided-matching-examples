@@ -16,10 +16,9 @@ To ensure you can copy-paste a JSON with guided matching rules into an existing 
 7. Add the tab to custom apps if needed.
 8. Click on **Save**.
 
-Now you can open this tab, select the All list view, and see all the Guided Matching setups in the org.  
+Now you can open this tab, select the `All` list view, and see all the Guided Matching setups in the org.  
 
 ### Step 2: Copy a rule set JSON into a Guided Matching record
-When you have navigated to the newly created tab, you can open the listview ‘All’ and you should be able to find a record with the name of the Target where you want to update the guided matching rules.
 
 What you need to do is:
 1. From the FinDock Setup tab, open Guided Matching Setup and create a new setup for your Target.
