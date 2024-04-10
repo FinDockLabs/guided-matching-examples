@@ -27,6 +27,7 @@ What you need to do is:
 2. Paste the following JSON into this field
 
 IF REQUIRED FOR RULESET:
+
 3. Make sure the `<Put here the exact name of your target>` part is replaced with the exact name of the Target
 4. You can Copy-Paste the name from the ‘Target’ field in the record for this
 
