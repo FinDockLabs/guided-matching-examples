@@ -30,6 +30,9 @@ IF REQUIRED FOR RULESET:
 4. Replace the Target name in the example JSON with the name of your Target. The location is marked `<Put here the name of your target>`.
 5. Save your changes.
 
+### Example Rulesets
+- `camt.053-examples.json`: additional rules to match transactions from CAMT.053 files for Source = NPSP and PaymentHub users. Does not work nicely with NPC without removing the Contact related rules.
+
 ## Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via an issue or any other method with FinDock before making a change.
