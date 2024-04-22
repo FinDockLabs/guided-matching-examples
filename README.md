@@ -25,10 +25,7 @@ What you need to do is:
 2. Go to the Guided Matching Setup tabs and open your new setup.
 3. Clear the Rules field and copy-paste an example JSON into the field.
 
-IF REQUIRED FOR RULESET:
-
-4. Replace the Target name in the example JSON with the name of your Target. The location is marked `<Put here the name of your target>`.
-5. Save your changes.
+A ruleset may have specific instructions. These instructions can be found in the README file in the directory of the ruleset type.
 
 ### Example Rulesets
 - `camt.053-examples.json`: additional rules to match transactions from CAMT.053 files for Source = NPSP and PaymentHub users. Does not work nicely with NPC without removing the Contact related rules.
