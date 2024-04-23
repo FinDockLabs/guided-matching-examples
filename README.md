@@ -31,6 +31,11 @@ A ruleset may have specific instructions. These instructions can be found in the
 - `camt.053-example.json`: additional rules to match transactions from CAMT.053 files for Source = NPSP and PaymentHub users. Does not work nicely with NPC without removing the Contact related rules.
 - `camt-053-npc-example.json`: additional rules to match transactions from CAMT.053 files for Source = NPC users. Also works for other data models leveraging Person Accounts.
 
+## Contributors
+
+- initial versions of CAMT rulesets by [Wouter van Leeuwen](https://github.com/Wouter-FinDock)
+
+
 ## Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via an issue or any other method with FinDock before making a change.
